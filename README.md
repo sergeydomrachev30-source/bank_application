@@ -300,10 +300,71 @@ my_function error: TypeError. Inputs: (1, "a"), {}
 
 Для проверки работы декоратора вы можете использовать `pytest` и фикстуру `capsys` для перехвата вывода в консоль. Также рекомендуется использовать `coverage.py` для измерения покрытия тестов.
 
+# Модуль read_transactions_from_excel_and_csv
+
+Этот модуль предоставляет функцию read_file, которая 
+предназначена для считывания финансовых операций из файлов CSV и
+Excel. Функция возвращает данные в виде списка словарей, что 
+удобно для дальнейшей обработки и анализа данных.
+
+### Установка
+
+Перед использованием убедитесь, что у вас установлена библиотека 
+pandas, а также openpyxl для работы с Excel файлами. Вы можете 
+установить их с помощью следующих команд:
+
+pip install pandas
+
+pip install openpyxl
+
+### Использование
+```python
+import os
+import pandas as pd
+from typing import List, Dict, Any, Hashable
+
+def read_file(file_path: str) -> List[Dict[Hashable, Any]]:
+    """функция для считывания csv и xslx файлов"""
+    if file_path.endswith(".csv"):
+        data = pd.read_csv(file_path, sep=";")
+    elif file_path.endswith(".xlsx"):
+        data = pd.read_excel(file_path)
+    else:
+        raise ValueError("Формат файла не поддерживается: " + file_path)
+
+    return data.to_dict(orient="records")
+```
+### Пример использования функции
+```python
+base_dir = os.path.dirname(os.path.dirname(__file__))
+csv_path = os.path.join(base_dir, "data", "transactions.csv")
+excel_path = os.path.join(base_dir, "data", "transactions_excel.xlsx")
+csv_data = read_file(csv_path)
+excel_data = read_file(excel_path)
+print(csv_data)
+print(excel_data)
+```
+Описание функции
+
+
+read_file(file_path: str) -> List[Dict[Hashable, Any]]: 
+Функция 
+принимает путь к файлу в формате строки и возвращает список 
+словарей, где каждый словарь представляет одну запись из файла.
+
+
+### Поддерживаемые форматы: CSV и Excel.
+
+Для CSV файлов используется метод pd.read_csv с указанием разделителя ;.
+Для Excel файлов используется метод pd.read_excel.
+Если формат файла не поддерживается, выбрасывается ошибка ValueError.
+
+
 # Запуск тестов
 
 Для запуска тестов выполните следующую команду в терминале:
 pytest
 Это выполнит все тесты и отобразит результаты в консоли. Убедитесь, что pytest установлен в вашем окружении.
- 
+
+ 
  
