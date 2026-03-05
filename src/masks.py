@@ -68,14 +68,14 @@ def get_mask_account(account_number: str) -> str:
 
 
 # примеры вызова функции
-try:
-    print(get_mask_card_number("1234 5678 9012 3456"))
-    print(get_mask_card_number(""))
-except ValueError as e:
-    print(e)
-
-try:
-    print(get_mask_account("Счет 12345678901234567890"))
-    print(get_mask_account(""))
-except ValueError as e:
-    print(e)
+# try:
+#     print(get_mask_card_number("1234 5678 9012 3456"))
+#     print(get_mask_card_number(""))
+# except ValueError as e:
+#     print(e)
+#
+# try:
+#     print(get_mask_account("Счет 12345678901234567890"))
+#     print(get_mask_account(""))
+# except ValueError as e:
+#     print(e)

@@ -6,7 +6,7 @@ from src.masks import get_mask_account, get_mask_card_number
 def get_mask_account_card(info: str) -> str:
     """Функция маскирует номер карты или счета"""
     info_list = info.split()
-    if info_list[0].lower() == "счет":
+    if info_list and info_list[0].lower() == "счет":
         return get_mask_account(info)
     else:
         return get_mask_card_number(info)

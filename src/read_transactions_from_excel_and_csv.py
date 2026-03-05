@@ -1,7 +1,7 @@
 import os
+from typing import Any, Dict, Hashable, List
 
 import pandas as pd
-from typing import List, Dict, Any, Hashable
 
 
 def read_file(file_path: str) -> List[Dict[Hashable, Any]]:
