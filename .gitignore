@@ -1,5 +1,23 @@
-.idea
-venv
-.coverage
-__pycache__/
+# Окружение и IDE
+.idea/
+.vscode/
+venv/
+.venv/
 .env
+
+# Кэш Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Тестирование и покрытие кода
+.coverage
+htmlcov/
+.pytest_cache/
+coverage.txt
+coverage.xml
+
+# Логи и банковские данные операции
+logs/
+*.log
