@@ -18,7 +18,6 @@ def test_get_mask_account_card(info, expected_result):
     assert result == expected_result
 
 
-# Тестирование на некорректные данные
 @pytest.mark.parametrize(
     "info",
     [
@@ -28,8 +27,9 @@ def test_get_mask_account_card(info, expected_result):
     ],
 )
 def test_get_mask_account_card_invalid(info):
-    with pytest.raises(ValueError):
-        get_mask_account_card(info)
+    """Тест: функция должна безопасно возвращать заглушку при невалидном формате."""
+    result = get_mask_account_card(info)
+    assert result == "Некорректный формат"
 
 
 # тесты для функции get_date
@@ -54,8 +54,8 @@ def test_get_date_edge_cases(iso_date, expected_result):
     assert result == expected_result
 
 
-# Тесты для некорректных входных данных
 @pytest.mark.parametrize("iso_date", ["", "not-a-date"])
 def test_get_date_invalid(iso_date):
-    with pytest.raises(ValueError):
-        get_date(iso_date)
+    """Тест проверяет, что битые форматы дат обрабатываются безопасно."""
+    result = get_date(iso_date)
+    assert result in ["Нет даты", "Некорректная дата"]

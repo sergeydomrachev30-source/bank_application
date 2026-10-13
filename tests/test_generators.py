@@ -1,7 +1,10 @@
 import pytest
 
-from src.generators import (card_number_generator, filter_by_currency,
-                            generate_description)
+from src.generators import (
+    card_number_generator,
+    filter_by_currency,
+    generate_description,
+)
 
 
 @pytest.fixture
@@ -44,16 +47,16 @@ def test_filter_by_empty_list(currency, empty_transactions):
     "transactions, expected_descriptions",
     [
         (
-            [
-                {"description": "Перевод организации"},
-                {"description": "Перевод со счета на счет"},
-                {"description": "Перевод с карты на карту"},
-            ],
-            [
-                "Перевод организации",
-                "Перевод со счета на счет",
-                "Перевод с карты на карту",
-            ],
+                [
+                    {"description": "Перевод организации"},
+                    {"description": "Перевод со счета на счет"},
+                    {"description": "Перевод с карты на карту"},
+                ],
+                [
+                    "Перевод организации",
+                    "Перевод со счета на счет",
+                    "Перевод с карты на карту",
+                ],
         ),
         ([], []),
     ],
@@ -101,6 +104,6 @@ def test_edge_cases(start, end):
     if start == end:
         formatted_number = f"{start:016d}"
         expected = " ".join(
-            [formatted_number[i:i + 4] for i in range(0, len(formatted_number), 4)]
+            [formatted_number[i: i + 4] for i in range(0, len(formatted_number), 4)]
         )
         assert result[0] == expected
