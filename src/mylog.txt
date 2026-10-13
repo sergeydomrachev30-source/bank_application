@@ -1,0 +1,6 @@
+Начало выполнения функции my_function с аргументами (1, 2) и {}
+Функция my_function завершена с результатом 3
+my_function ok
+my_function error: TypeError. Inputs: (1, 'ф'), {}
+my_function error: TypeError. Inputs: (1, 'а'), {}
+my_function error: TypeError. Inputs: (1, 'а'), {}
